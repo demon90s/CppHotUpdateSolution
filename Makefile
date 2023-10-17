@@ -20,6 +20,9 @@ $(TARGET): $(OBJS) $(C_OBJS)
 	@echo -e "[LINGKING] \c"
 		$(CC) $(CXXFLAGS) $(OBJS) $(C_OBJS) -o $(TARGET) -ldl -export-dynamic
 
+ubuntu: $(OBJS) $(C_OBJS)
+	@echo -e "[LINGKING] \c"
+		$(CC) $(CXXFLAGS) $(OBJS) $(C_OBJS) -o $(TARGET) -ldl -export-dynamic -no-pie
 
 clean:
 	@rm -fr *.o main core.* libreload*.so reload

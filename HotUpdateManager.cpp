@@ -481,7 +481,15 @@ bool HotUpdateManager::LoadElfSymbols(const char *elf_file_path)
     size_t base_address = 0;
     if (elf_reader.GetHeader().e_type == ET_DYN)
     {
-        base_address = get_base_address(elf_file_path);
+        if (elf_file_path == get_exe_path())
+        {
+            printf("HotUpdateManager::LoadElfSymbols: executable file must not be a shared object, try to use -no-pie option to build your program\n");
+            return false;
+        }
+        else
+        {
+            base_address = get_base_address(elf_file_path);
+        }
     }
     else if (elf_reader.GetHeader().e_type == ET_EXEC)
     {

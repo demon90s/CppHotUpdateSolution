@@ -43,7 +43,7 @@ void Menu::MakeChoice(void *data)
         index = std::stoi(input);
         index -= 1;
     }
-    catch (std::exception e)
+    catch (const std::exception &e)
     {
         std::cout << "wrong input, format error" << std::endl;
         pauseInput();
