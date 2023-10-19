@@ -1,10 +1,5 @@
 # README
 
-## Prepare
-
-- CentOS7
-- g++4.8.5
-
 ## Build
 
 on CentOS:
@@ -23,3 +18,6 @@ make ubuntu
 
 Just modify Utility.cpp -> consoleLog while program running, then choose "compile" -> "reload" -> "test".
 
+## Use
+
+You can copy HotUpdateManager and ELFReader to your source code.
