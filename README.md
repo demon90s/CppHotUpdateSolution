@@ -1,7 +1,23 @@
 # README
 
-测试环境：
+## Build
 
-- CentOS7 64 位操作系统
-- 宽松模式的 SELinux(使用命令 setenforce 0 设置)
-- g++4.8.5
+on CentOS:
+
+```
+make
+```
+
+on Ubuntu:
+
+```
+make ubuntu
+```
+
+## Test
+
+Just modify Utility.cpp -> consoleLog while program running, then choose "compile" -> "reload" -> "test".
+
+## Use
+
+You can copy HotUpdateManager and ELFReader to your source code.
