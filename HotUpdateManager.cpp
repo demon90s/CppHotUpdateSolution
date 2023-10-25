@@ -545,14 +545,32 @@ bool HotUpdateManager::LoadElfSymbols(const char *elf_file_path)
             elfsymbol.sym.st_size > 0 &&
             strcmp(symbol_section, ".text") == 0)
         {
-            hookable_function_symbols[symbol_name].push_back(symbol);
+            auto &symbols = hookable_function_symbols[symbol_name];
+            for (auto &tmp_symbol : symbols)
+            {
+                if (tmp_symbol == symbol)
+                {
+                    printf("HotUpdateManager::LoadElfSymbols fail, your program has symbols with same name and hash (%s)\n", symbol.name.c_str());
+                    return false;
+                }
+            }
+            symbols.push_back(symbol);
             // printf("add hookable function: %s\n", symbol_name);
         }
         else if (elfsymbol.sym_type == STT_OBJECT &&
                  elfsymbol.sym_bind == STB_LOCAL &&
                  (strcmp(symbol_section, ".bss") == 0 || strcmp(symbol_section, ".data") == 0))
         {
-            transfer_variable_symbols[symbol_name].push_back(symbol);
+            auto &symbols = transfer_variable_symbols[symbol_name];
+            for (auto &tmp_symbol : symbols)
+            {
+                if (tmp_symbol == symbol)
+                {
+                    printf("HotUpdateManager::LoadElfSymbols fail, your program has symbols with same name and hash (%s)\n", symbol.name.c_str());
+                    return false;
+                }
+            }
+            symbols.push_back(symbol);
         }
     }
 

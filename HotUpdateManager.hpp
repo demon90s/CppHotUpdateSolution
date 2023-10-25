@@ -22,6 +22,18 @@ private:
 
     struct Symbol
     {
+        bool operator==(const Symbol &rhs) const
+        {
+            if (check_hash)
+            {
+                return hash == rhs.hash && name == rhs.name;
+            }
+            else
+            {
+                return name == rhs.name;
+            }
+        }
+
         std::string name;
         size_t address = 0;
         size_t transferred_address = 0;
