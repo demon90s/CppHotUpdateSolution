@@ -550,7 +550,7 @@ bool HotUpdateManager::LoadElfSymbols(const char *elf_file_path)
             {
                 if (tmp_symbol == symbol)
                 {
-                    printf("HotUpdateManager::LoadElfSymbols fail, your program has symbols with same name and hash (%s)\n", symbol.name.c_str());
+                    printf("HotUpdateManager::LoadElfSymbols fail, your program has symbols with same name and hash (%s), which means your program has source files with same name\n", symbol.name.c_str());
                     return false;
                 }
             }
@@ -566,7 +566,7 @@ bool HotUpdateManager::LoadElfSymbols(const char *elf_file_path)
             {
                 if (tmp_symbol == symbol)
                 {
-                    printf("HotUpdateManager::LoadElfSymbols fail, your program has symbols with same name and hash (%s)\n", symbol.name.c_str());
+                    printf("HotUpdateManager::LoadElfSymbols fail, your program has symbols with same name and hash (%s), which means your program has source files with same name\n", symbol.name.c_str());
                     return false;
                 }
             }
